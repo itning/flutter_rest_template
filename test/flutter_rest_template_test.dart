@@ -22,7 +22,7 @@ void main() async {
     DioClientHttpRequestFactory factory = DioClientHttpRequestFactory(Dio());
     RestTemplate restTemplate = RestTemplate(factory);
     ResponseEntity<String> responseEntity = await restTemplate.getForEntry(
-        (responseBytes) => Utf8Decoder().convert(responseBytes),
+        (responseBytes) => const Utf8Decoder().convert(responseBytes),
         uriString: "http://www.baidu.com");
     print(responseEntity);
   });
