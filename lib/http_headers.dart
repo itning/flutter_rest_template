@@ -46,6 +46,17 @@ class HttpHeaders {
   void clear() {
     _map.clear();
   }
+
+  @override
+  String toString() {
+    var stringBuffer = StringBuffer();
+    _map.forEach((key, value) {
+      for (var e in value) {
+        stringBuffer.writeln('$key: $e');
+      }
+    });
+    return stringBuffer.toString();
+  }
 }
 
 Map<String, V> caseInsensitiveKeyMap<V>([Map<String, V>? value]) {

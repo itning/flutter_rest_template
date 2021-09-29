@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_rest_template/flutter_rest_template.dart';
 import 'package:flutter_rest_template/http_method.dart';
@@ -20,7 +22,7 @@ void main() async {
     DioClientHttpRequestFactory factory = DioClientHttpRequestFactory(Dio());
     RestTemplate restTemplate = RestTemplate(factory);
     ResponseEntity<String> responseEntity = await restTemplate.getForEntry(
-        (responseBytes) => String.fromCharCodes(responseBytes),
+        (responseBytes) => Utf8Decoder().convert(responseBytes),
         uriString: "http://www.baidu.com");
     print(responseEntity);
   });
