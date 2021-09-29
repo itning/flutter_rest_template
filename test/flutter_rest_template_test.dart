@@ -1,7 +1,9 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_rest_template/flutter_rest_template.dart';
+import 'package:flutter_rest_template/http_method.dart';
+import 'package:flutter_rest_template/impl/dio_client_http_request_factory.dart';
 import 'package:flutter_rest_template/response_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:flutter_rest_template/flutter_rest_template.dart';
 
 void main() async {
   // test('adds one to input values', () {
@@ -11,8 +13,15 @@ void main() async {
   //   expect(calculator.addOne(0), 1);
   // });
   test("run", () async {
-    RestTemplate a = RestTemplate();
-    ResponseEntity<String?> responseEntity =
-        await a.getForEntry((responseMap) => null);
+    expect(HttpMethod.GET.toShortString(), "GET");
+  });
+
+  test('', () async {
+    DioClientHttpRequestFactory factory = DioClientHttpRequestFactory(Dio());
+    RestTemplate restTemplate = RestTemplate(factory);
+    ResponseEntity<String> responseEntity = await restTemplate.getForEntry(
+        (responseBytes) => String.fromCharCodes(responseBytes),
+        uriString: "http://www.baidu.com");
+    print(responseEntity);
   });
 }

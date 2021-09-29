@@ -13,4 +13,20 @@ class ResponseEntity<T> {
       this.headers = headers;
     }
   }
+
+  @override
+  String toString() {
+    StringBuffer builder = StringBuffer("<");
+    builder.write(status);
+    builder.write(' ');
+    builder.write(status.reasonPhrase);
+    builder.write(',');
+    if (body != null) {
+      builder.write(body);
+      builder.write(',');
+    }
+    builder.write(headers);
+    builder.write('>');
+    return builder.toString();
+  }
 }
