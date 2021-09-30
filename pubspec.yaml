@@ -1,7 +1,7 @@
 name: flutter_rest_template
 description: A RestTemplate Client Achieved By Dart
 version: 0.0.1
-homepage:
+homepage: https://github.com/itning/flutter_rest_template
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
