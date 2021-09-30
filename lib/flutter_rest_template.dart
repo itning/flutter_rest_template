@@ -53,6 +53,14 @@ class RestTemplate {
   }
 
   /// GET请求
+  /// 从JSON字符串解析返回一个MAP
+  Future<ResponseEntity<Map<String, dynamic>>> getForMapEntry(
+      String url) async {
+    return await getForEntry(mapResponseConversion,
+        uriString: url, acceptMediaTypes: [MediaType.applicationJson]);
+  }
+
+  /// GET请求
   Future<ResponseEntity<T>> getForEntry<T>(
       ResponseConversion<T> responseConversion,
       {Uri? uri,
@@ -107,6 +115,16 @@ class RestTemplate {
     }
     return ResponseEntity(response.getStatusCode(),
         body: data, headers: response.getHeaders());
+  }
+
+  /// POST请求
+  /// 从JSON字符串解析返回一个MAP
+  Future<ResponseEntity<Map<String, dynamic>>> postForMapEntry(String url,
+      {request}) async {
+    return await postForEntry(mapResponseConversion,
+        uriString: url,
+        request: request,
+        acceptMediaTypes: [MediaType.applicationJson]);
   }
 
   Future<ClientHttpResponse> _doExecute<T>(
