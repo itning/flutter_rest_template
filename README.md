@@ -1,6 +1,6 @@
 # RestTemplate在Dart语言Flutter上的实现
 
-[![Hits](https://hitcount.itning.top?u=itning&r=itning)](https://github.com/itning/hit-count)
+[![Hits](https://hitcount.itning.top?u=itning&r=flutter_rest_template)](https://github.com/itning/hit-count)
 
 ## Features
 
