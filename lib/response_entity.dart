@@ -18,8 +18,6 @@ class ResponseEntity<T> {
   String toString() {
     StringBuffer builder = StringBuffer("<");
     builder.write(status);
-    builder.write(' ');
-    builder.write(status.reasonPhrase);
     builder.write(',');
     if (body != null) {
       builder.write(body);

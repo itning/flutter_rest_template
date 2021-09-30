@@ -11,5 +11,5 @@ abstract class ClientHttpRequest {
 
   HttpHeaders getHeaders();
 
-  getBody();
+  void setBody(List<int> bytes);
 }

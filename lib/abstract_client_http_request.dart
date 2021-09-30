@@ -10,6 +10,8 @@ abstract class AbstractClientHttpRequest implements ClientHttpRequest {
 
   HttpHeaders? _readOnlyHeaders;
 
+  List<int>? body;
+
   @nonVirtual
   @override
   HttpHeaders getHeaders() {
@@ -26,18 +28,19 @@ abstract class AbstractClientHttpRequest implements ClientHttpRequest {
 
   @nonVirtual
   @override
-  getBody() {
-    return null;
+  void setBody(List<int> bytes) {
+    body = bytes;
   }
 
   @nonVirtual
   @override
   Future<ClientHttpResponse> execute() async {
     assert(!_executed);
-    ClientHttpResponse result = await executeInternal(_headers, null);
+    ClientHttpResponse result = await executeInternal(_headers, body);
     _executed = true;
     return result;
   }
 
-  Future<ClientHttpResponse> executeInternal(HttpHeaders headers, body);
+  Future<ClientHttpResponse> executeInternal(
+      HttpHeaders headers, List<int>? body);
 }

@@ -11,12 +11,12 @@ class DioClientHttpResponse implements ClientHttpResponse {
   DioClientHttpResponse(this._response);
 
   @override
-  Uint8List? getBody() {
+  UnmodifiableUint8ListView? getBody() {
     List<int>? data = _response.data;
     if (null == data) {
       return null;
     }
-    return Uint8List.fromList(data);
+    return UnmodifiableUint8ListView(Uint8List.fromList(data));
   }
 
   @override

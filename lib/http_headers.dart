@@ -14,8 +14,31 @@ class HttpHeaders {
     return _map[name.trim().toLowerCase()];
   }
 
+  String? getFirst(String name) {
+    List<String>? values = _map[name.trim().toLowerCase()];
+    if (null == values || values.isEmpty) {
+      return null;
+    } else {
+      return values[0];
+    }
+  }
+
   Map<String, List<String>> toMap() {
     return _map;
+  }
+
+  Map<String, String> toSingleValueMap() {
+    Map<String, String> result = HashMap();
+    _map.forEach((key, value) {
+      result[key] = value.reduce((value, element) => "$value,$element");
+    });
+    return result;
+  }
+
+  void addAll(Map<String, List<String>> map) {
+    map.forEach((key, value) {
+      set(key, value);
+    });
   }
 
   void add(String name, String value) {

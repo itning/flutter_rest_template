@@ -4,7 +4,6 @@ import 'package:flutter_rest_template/http_headers.dart';
 import 'package:flutter_rest_template/http_status.dart';
 
 abstract class ClientHttpResponse {
-
   HttpStatus getStatusCode();
 
   int getRawStatusCode();
@@ -13,5 +12,5 @@ abstract class ClientHttpResponse {
 
   HttpHeaders getHeaders();
 
-  Uint8List? getBody();
+  UnmodifiableUint8ListView? getBody();
 }
